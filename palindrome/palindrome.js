@@ -10,4 +10,10 @@
  * *i be the position of an element (i.e., a character or boundary) in s2 whose palindromic span is being determined, with i always to the right of c
  * *i2 be the mirrored position of i around c (e.g., {i, i2} = {6, 4}, {7, 3}, {8, 2},… when c = 5 (i.e., i2 = c * 2 - i)
  */
+function manacher(s) {
+  if (!s)
+    return "";
 
+}
+
+module.exports = manacher;

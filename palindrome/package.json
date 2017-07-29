@@ -1,0 +1,15 @@
+{
+  "name": "palindrome",
+  "version": "1.0.0",
+  "description": "finds the longest palindromic substring using Manacher's algorithim",
+  "main": "palindrome.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "John Goff",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2"
+  }
+}
