@@ -11,5 +11,17 @@
   "devDependencies": {
     "chai": "^4.1.0",
     "mocha": "^3.4.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnTheScout/lighthouse-stretch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JohnTheScout/lighthouse-stretch/issues"
+  },
+  "homepage": "https://github.com/JohnTheScout/lighthouse-stretch#readme"
 }
