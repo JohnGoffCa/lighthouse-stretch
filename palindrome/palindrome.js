@@ -13,7 +13,82 @@
 function manacher(s) {
   if (!s)
     return "";
+  
+  var s2 = addBoundaries(s.split(""));
+  var p = [];
+  let c = 0;
+  let r = 0;
+  let m = 0;
+  let n = 0;
 
+  for (let i = 1; i < s2.length; i++) {
+    if (i > r) {
+      p[i] = 0; 
+      m = i - 1;
+      n = i + 1;
+    } else {
+      let i2 = c * 2 - i;
+
+      if (p[i2] < (r - i - 1)) {
+        p[i] = p[i2];
+        m = -1;
+      } else {
+        p[i] = r - i;
+        n = r + 1;
+        m = i * 2 - n;
+      }
+    }
+
+    while (m >= 0 && n < s2.length && s2[m] === s2[n]) {
+      p[i]++;
+      m -= 1;
+      n++;
+    }
+    
+    if ((i + p[i]) > r) {
+      c = i;
+      r = i + p[i];
+    }
+  }
+
+  let len = 0;
+  c = 0;
+  for (let i = 1; i < s2.length; i++) {
+    if (len < p[i]) {
+      len = p[i];
+      c = i;
+    }
+  }
+
+  let ss = s2.slice(c - len, c + len + 1);
+  let result = removeBoundaries(ss).join("");
+  if (result.length < 2)
+    return "";
+  return result;
+}
+
+function addBoundaries(cs) {
+  if (!cs) 
+    return "||".split("");
+
+  let cs2 = [];
+  for (let i = 0; i < (cs.length * 2); i += 2) {
+    cs2[i] = '|';
+    cs2[i + 1] = cs[i / 2];
+  }
+  cs2[cs.length * 2] = '|';
+  return cs2;
+}
+
+function removeBoundaries(cs) {
+  if (!cs)
+    return [""];
+
+  let cs2 = [];
+  for (let i = 0; i < ((cs.length - 1) / 2); i++) {
+    cs2[i] = cs[i * 2 + 1];
+  }
+  return cs2;
 }
 
 module.exports = manacher;
